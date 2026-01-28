@@ -6,13 +6,13 @@ const SUPABASE_CONFIG = {
 };
 
 // Initialize Supabase Client
-if (typeof supabase === 'undefined') {
+if (typeof window.supabase === 'undefined') {
     console.error('Supabase script not loaded. Please ensure Supabase CDN is included.');
     throw new Error('Supabase is required but not loaded');
 }
 
-const { createClient } = supabase;
-const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+const { createClient } = window.supabase;
+const supabaseClient = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
 
 // Database Schema Constants
 const TABLES = {
@@ -48,11 +48,11 @@ const BUCKETS = {
 // API Functions
 class CaliQuestAPI {
     constructor() {
-        if (typeof supabase === 'undefined') {
+        if (typeof supabaseClient === 'undefined') {
             throw new Error('Supabase is required but not loaded');
         }
         
-        this.supabase = supabase;
+        this.supabase = supabaseClient;
         this.currentUser = null;
     }
 
