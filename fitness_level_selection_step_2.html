@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fitness Level Selection - Step 2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f0df2",
+                        "background-light": "#f7f5f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>.athletic-bg {
+    background-image: linear-gradient(rgba(25, 16, 34, 0.92), rgba(25, 16, 34, 0.92)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuDqODQK8nh1GhBi4lQwGEOlhyj7JXdio3_O4wYh9h2V2W-cY6c24Wm6VwZzSCmGg23t-Hvtdm0LTNpsGozJ83VHet-L46A17fQRp9KXwow_wd1V-rx7B38XhpncpnUJmpJTDIp0hVqv_B9eWlylh0bV4GaanUIIv61sTQ6XL0cmVF2aVhr3aMdLKaa-tGlNc-2PfEVXrCjoErQjiLdjBoQSXNrNrAhpW7ml_1yjkDg65LGjMbN-SSkmeHOIRzTpbltNJ1lNaC65dWXg);
+    background-size: cover;
+    background-position: center
+    }
+.card-selected {
+    border: 3px solid #7f0df2;
+    box-shadow: 0 0 20px rgba(127, 13, 242, 0.2)
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col athletic-bg group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header/Navigation -->
+<div class="px-4 md:px-20 lg:px-40 flex flex-col justify-center py-5">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 md:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">CaliLevel Up</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/40" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQfmw6GycYlAvihh3TA3AWZzKtjQ6NtEq4_UYD9SLQOL25fwh5bjnAAqk2Bfvfe_6LOvaxQMmoOvB26PjPpm8t8BZfnbDAWCPr9ohPudvwmXOvSFmlIg5UlqZa1DGx8aQXCz9S2sBgXiFtqcUV7MjTG00z5cpkWCWeGFOFsQ-Yv8iy4_f7GyntenDFJe1jWrdbNaX5-rjHAXDmsLHKNRd65IGcKHXNmCbWzWrXDcKZ_PcTa5-bJVPCzi8x80x0man1haFoSOG7_mNT");'></div>
+</div>
+</header>
+<div class="layout-content-container flex flex-col max-w-[1200px] mx-auto w-full pt-8 px-4">
+<!-- Progress Section -->
+<div class="flex flex-col gap-3 p-4 mb-4">
+<div class="flex gap-6 justify-between items-end">
+<div>
+<h3 class="text-white text-lg font-semibold leading-normal">Setup Phase</h3>
+<p class="text-primary text-sm font-medium">Step 2 of 2: Fitness Level</p>
+</div>
+<p class="text-white text-sm font-normal leading-normal">100% Complete</p>
+</div>
+<div class="rounded-full bg-primary/20 h-3 overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 100%;"></div>
+</div>
+<p class="text-white/60 text-xs font-normal leading-normal">Personalizing your training path based on your experience</p>
+</div>
+<!-- Headline Section -->
+<div class="text-center py-6">
+<h1 class="text-white tracking-tight text-3xl md:text-4xl font-bold leading-tight pb-3">Choose Your Starting Rank</h1>
+<p class="text-white/70 text-lg font-normal leading-normal max-w-2xl mx-auto">This will determine your initial workout program and unlock your first set of branches in the skill tree.</p>
+</div>
+<!-- Level Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 mt-4">
+<!-- Beginner Card (Selected State Example) -->
+<div class="flex flex-col gap-5 p-6 rounded-xl bg-white/5 border-2 border-primary card-selected relative transition-all cursor-pointer group hover:bg-white/10">
+<div class="absolute top-4 right-4 text-primary">
+<span class="material-symbols-outlined text-3xl">check_circle</span>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden" data-alt="Stylized beginner athlete doing pushups" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCWYVf78wgs4G3GDw9pLpmObcfvZeiKY_ISQp_q4XC-HCf_hsBbxAYmclVMP7BArJo0E9GOV-phvPfPeTHdOPZsHJKM7iacS3oA4FaBSZnSJGGL1YQm7Q90267yTQGmx_gXdjU112k4CKkgPwZolauwY0DX6-s0udCqVHlSLtS-Me1wntYMyc5WQu1ooh0Ka63SG0P8t6WunMnh3wq1USWM3CLNDpB-xB3DMvns8mXcahAKz_kBfdyQFqwfA21mHIR9yK7qjMIrwryJ");'>
+<div class="w-full h-full bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+<p class="text-white text-2xl font-bold leading-tight">Beginner</p>
+</div>
+<p class="text-white/80 text-base font-normal leading-relaxed">Starting from scratch. Focusing on foundation, basic bodyweight movements, and perfect form.</p>
+<div class="mt-4 inline-flex px-3 py-1 rounded-full bg-primary/30 text-primary text-xs font-bold uppercase tracking-wider">Active Choice</div>
+</div>
+</div>
+<!-- Intermediate Card -->
+<div class="flex flex-col gap-5 p-6 rounded-xl bg-white/5 border-2 border-white/10 relative transition-all cursor-pointer group hover:border-primary/50 hover:bg-white/10">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden" data-alt="Athlete performing a pull up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfxRRycYXue-SO6ctPARFI0MHd_W1mz2mITGybndLAApdSfi1Ao9SX-qMJFdQcxAq8jiOmpJxlJuZSYKjcyY6jgxj3Cvkq5VRsIWm4oy1QdqBK4HzMx25uKUzSgJSkuVIuvWGCZDM--V_faTHtwB9zMO4FXiuEgHUXkkFXI2dvAl-takq8tVcdSp5O52hKytanBPrFTihvOIe-cFFUMfNWIzpNMqyXp5f_hDAputPTstB7wylgyIISjB_FwsN4njYpW10RxVzJlqav");'>
+<div class="w-full h-full bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-white/50">bolt</span>
+<p class="text-white text-2xl font-bold leading-tight">Intermediate</p>
+</div>
+<p class="text-white/60 text-base font-normal leading-relaxed">Ready for pull-ups and dips. You have the basic strength and want to build serious endurance.</p>
+<div class="mt-4 inline-flex px-3 py-1 rounded-full bg-white/10 text-white/40 text-xs font-bold uppercase tracking-wider">Select Rank</div>
+</div>
+</div>
+<!-- Advanced Card -->
+<div class="flex flex-col gap-5 p-6 rounded-xl bg-white/5 border-2 border-white/10 relative transition-all cursor-pointer group hover:border-primary/50 hover:bg-white/10">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg overflow-hidden" data-alt="Advanced athlete doing a muscle up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwLm4kUc2Frq20vwjXGJLjr2KQ-HqD2b2wXspTOP_NqcggiELqDopHFqxu59e9E9veStV9vEdmeyJ3X-lBgyuRGT715z3ngvSpNmvbhvRLF1Thk4VeO2m07m6e_LTmID51jGnsIyRpDZEHiD28k5MszZqcF4J1dOq9zCSqyvPPhshHkmmuKoFTD8z5tUB4phBut3rHVQ8Ou29uUrgrkMAGB-VAmudpEwmEuhFQ2SfQpR7ooBpK6Fg0ZY2yBHdyYoKQkOvnq24lb0ks");'>
+<div class="w-full h-full bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-white/50">military_tech</span>
+<p class="text-white text-2xl font-bold leading-tight">Advanced</p>
+</div>
+<p class="text-white/60 text-base font-normal leading-relaxed">Mastering the basics. Working on static holds, muscle-ups, and elite calisthenics skills.</p>
+<div class="mt-4 inline-flex px-3 py-1 rounded-full bg-white/10 text-white/40 text-xs font-bold uppercase tracking-wider">Select Rank</div>
+</div>
+</div>
+</div>
+<!-- Navigation Actions -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 p-4 mt-12 border-t border-white/10 pt-8 mb-10">
+<button class="flex items-center gap-2 px-8 py-3 rounded-lg text-white/70 font-semibold hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+                            Back to Bio
+                        </button>
+<button class="w-full md:w-auto px-12 py-4 bg-primary text-white font-bold text-lg rounded-xl shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all active:scale-95">
+                            Complete Setup
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

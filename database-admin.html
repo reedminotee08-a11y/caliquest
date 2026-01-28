@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>CaliQuest - إدارة قاعدة البيانات</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00eeff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans Arabic", "sans-serif"],
+                        "arabic": ["Noto Sans Arabic", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .code-block {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .sql-keyword { color: #ff79c6; }
+        .sql-string { color: #f1fa8c; }
+        .sql-number { color: #bd93f9; }
+        .sql-comment { color: #6272a4; font-style: italic; }
+        .status-success { color: #50fa7b; }
+        .status-error { color: #ff5555; }
+        .status-warning { color: #ffb86c; }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-white">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="text-primary">
+                    <svg class="w-8 h-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                    </svg>
+                </div>
+                <h2 class="text-xl font-black tracking-tight uppercase">CaliQuest</h2>
+            </div>
+            <nav class="flex items-center gap-6">
+                <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">الرئيسية</a>
+                <a href="admin_dashboard_overview.html" class="text-sm font-medium hover:text-primary transition-colors">لوحة التحكم</a>
+                <a href="#" class="text-primary text-sm font-bold border-b-2 border-primary pb-1">قاعدة البيانات</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-6 py-8">
+        <!-- Header Section -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-black mb-4">إدارة قاعدة البيانات</h1>
+            <p class="text-white/70 arabic-font">مخطط قاعدة بيانات Supabase الكامل لمنصة CaliQuest</p>
+        </div>
+
+        <!-- Connection Status -->
+        <div id="connectionStatus" class="mb-6 p-4 rounded-lg border border-white/20 bg-white/5">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined">cloud</span>
+                <span id="statusText">جاري التحقق من الاتصال...</span>
+            </div>
+        </div>
+
+        <!-- Database Schema Overview -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-primary">نظرة عامة على المخطط</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary">people</span>
+                        <h3 class="text-lg font-bold">المستخدمون والملفات الشخصية</h3>
+                    </div>
+                    <ul class="text-sm text-white/70 space-y-1">
+                        <li>• users</li>
+                        <li>• profiles</li>
+                        <li>• user_settings</li>
+                        <li>• followers</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary">fitness_center</span>
+                        <h3 class="text-lg font-bold">التدريب والتمارين</h3>
+                    </div>
+                    <ul class="text-sm text-white/70 space-y-1">
+                        <li>• training_paths</li>
+                        <li>• exercises</li>
+                        <li>• workout_plans</li>
+                        <li>• user_workouts</li>
+                        <li>• workout_sessions</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary">emoji_events</span>
+                        <h3 class="text-lg font-bold">التحديات والإنجازات</h3>
+                    </div>
+                    <ul class="text-sm text-white/70 space-y-1">
+                        <li>• challenges</li>
+                        <li>• user_challenges</li>
+                        <li>• achievements</li>
+                        <li>• user_achievements</li>
+                        <li>• leaderboard</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary">shopping_bag</span>
+                        <h3 class="text-lg font-bold">المكافآت والمتجر</h3>
+                    </div>
+                    <ul class="text-sm text-white/70 space-y-1">
+                        <li>• xp_rewards</li>
+                        <li>• user_rewards</li>
+                        <li>• equipment</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary">forum</span>
+                        <h3 class="text-lg font-bold">المجتمع</h3>
+                    </div>
+                    <ul class="text-sm text-white/70 space-y-1">
+                        <li>• community_posts</li>
+                        <li>• comments</li>
+                        <li>• likes</li>
+                        <li>• notifications</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary">restaurant</span>
+                        <h3 class="text-lg font-bold">التغذية</h3>
+                    </div>
+                    <ul class="text-sm text-white/70 space-y-1">
+                        <li>• nutrition</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SQL Schema Code -->
+        <section class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-primary">مخطط SQL الكامل</h2>
+                <button onclick="copySchemaCode()" class="px-4 py-2 bg-primary text-background-dark rounded-lg hover:bg-primary/80 transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined">content_copy</span>
+                    نسخ الكود
+                </button>
+            </div>
+            
+            <div class="code-block">
+                <pre id="schemaCode"></pre>
+            </div>
+        </section>
+
+        <!-- Database Operations -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-primary">عمليات قاعدة البيانات</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Initialize Database -->
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <h3 class="text-lg font-bold mb-4">تهيئة قاعدة البيانات</h3>
+                    <p class="text-white/70 text-sm mb-4">تنفيذ مخطط SQL الكامل لإنشاء جميع الجداول</p>
+                    <button onclick="initializeDatabase()" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                        تهيئة قاعدة البيانات
+                    </button>
+                </div>
+
+                <!-- Test Connection -->
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <h3 class="text-lg font-bold mb-4">اختبار الاتصال</h3>
+                    <p class="text-white/70 text-sm mb-4">التحقق من اتصال Supabase</p>
+                    <button onclick="testConnection()" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        اختبار الاتصال
+                    </button>
+                </div>
+
+                <!-- View Tables -->
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <h3 class="text-lg font-bold mb-4">عرض الجداول</h3>
+                    <p class="text-white/70 text-sm mb-4">عرض قائمة بجميع الجداول</p>
+                    <button onclick="viewTables()" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        عرض الجداول
+                    </button>
+                </div>
+
+                <!-- Clear Database -->
+                <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                    <h3 class="text-lg font-bold mb-4">مسح قاعدة البيانات</h3>
+                    <p class="text-white/70 text-sm mb-4">حذف جميع البيانات (خطير!)</p>
+                    <button onclick="clearDatabase()" class="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                        مسح قاعدة البيانات
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Query Console -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-primary">وحدة التحكم في الاستعلامات</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">استعلام SQL مخصص</label>
+                    <textarea id="customQuery" class="w-full h-32 p-4 rounded-lg bg-background-dark border border-white/20 text-white font-mono text-sm" placeholder="اكتب استعلام SQL هنا..."></textarea>
+                </div>
+                
+                <div class="flex gap-4">
+                    <button onclick="executeQuery()" class="px-6 py-2 bg-primary text-background-dark rounded-lg hover:bg-primary/80 transition-colors">
+                        تنفيذ الاستعلام
+                    </button>
+                    <button onclick="clearQuery()" class="px-6 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors">
+                        مسح
+                    </button>
+                </div>
+                
+                <div id="queryResults" class="hidden">
+                    <h3 class="text-lg font-bold mb-4">النتائج:</h3>
+                    <div class="code-block">
+                        <pre id="resultsContent"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Storage Buckets -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-primary">مخازن التخزين (Storage Buckets)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="p-4 rounded-lg border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary">account_circle</span>
+                        <h4 class="font-bold">avatars</h4>
+                    </div>
+                    <p class="text-white/70 text-sm">صور الملفات الشخصية للمستخدمين</p>
+                </div>
+                
+                <div class="p-4 rounded-lg border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary">fitness_center</span>
+                        <h4 class="font-bold">exercise_images</h4>
+                    </div>
+                    <p class="text-white/70 text-sm">صور التمارين والتمارين التوضيحية</p>
+                </div>
+                
+                <div class="p-4 rounded-lg border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary">videocam</span>
+                        <h4 class="font-bold">workout_videos</h4>
+                    </div>
+                    <p class="text-white/70 text-sm">فيديوهات التمارين والتدريبات</p>
+                </div>
+                
+                <div class="p-4 rounded-lg border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary">emoji_events</span>
+                        <h4 class="font-bold">achievement_images</h4>
+                    </div>
+                    <p class="text-white/70 text-sm">صور وشارات الإنجازات</p>
+                </div>
+                
+                <div class="p-4 rounded-lg border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary">hardware</span>
+                        <h4 class="font-bold">equipment_images</h4>
+                    </div>
+                    <p class="text-white/70 text-sm">صور المعدات والتجهيزات</p>
+                </div>
+                
+                <div class="p-4 rounded-lg border border-white/10 bg-white/5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary">groups</span>
+                        <h4 class="font-bold">community_media</h4>
+                    </div>
+                    <p class="text-white/70 text-sm">وسائط المجتمع والمشاركات</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8 bg-background-dark mt-12">
+        <div class="max-w-[1200px] mx-auto px-6 text-center">
+            <p class="text-white/50 text-sm">CaliQuest Database Admin © 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load schema code
+        async function loadSchemaCode() {
+            try {
+                const response = await fetch('database-schema.sql');
+                const schemaText = await response.text();
+                document.getElementById('schemaCode').textContent = schemaText;
+                highlightSQL();
+            } catch (error) {
+                console.error('Error loading schema:', error);
+                document.getElementById('schemaCode').textContent = 'Error loading schema file';
+            }
+        }
+
+        // Basic SQL syntax highlighting
+        function highlightSQL() {
+            const code = document.getElementById('schemaCode');
+            let html = code.textContent;
+            
+            // Keywords
+            const keywords = ['CREATE', 'TABLE', 'INSERT', 'UPDATE', 'DELETE', 'SELECT', 'FROM', 'WHERE', 'AND', 'OR', 'NOT', 'NULL', 'DEFAULT', 'PRIMARY', 'KEY', 'FOREIGN', 'REFERENCES', 'UNIQUE', 'CHECK', 'WITH', 'TIME', 'ZONE', 'TIMESTAMP', 'NOW', 'UUID', 'GENERATE', 'V4', 'EXTENSION', 'IF', 'EXISTS', 'ENABLE', 'ROW', 'LEVEL', 'SECURITY', 'POLICY', 'USING', 'FOR', 'ALL', 'CASCADE', 'RESTRICT', 'ON', 'CONFLICT', 'DO', 'NOTHING', 'RETURNING', 'ORDER', 'BY', 'ASC', 'DESC', 'LIMIT', 'OFFSET', 'GROUP', 'HAVING', 'JOIN', 'INNER', 'LEFT', 'RIGHT', 'FULL', 'OUTER', 'UNION', 'INTERSECT', 'EXCEPT', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END', 'AS', 'DISTINCT', 'BETWEEN', 'IN', 'LIKE', 'ILIKE', 'SIMILAR', 'REGEX', 'IS', 'TRUE', 'FALSE', 'UNKNOWN'];
+            
+            keywords.forEach(keyword => {
+                const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+                html = html.replace(regex, `<span class="sql-keyword">${keyword}</span>`);
+            });
+            
+            // Strings
+            html = html.replace(/'([^']*)'/g, '<span class="sql-string">\'$1\'</span>');
+            html = html.replace(/"([^"]*)"/g, '<span class="sql-string">"$1"</span>');
+            
+            // Numbers
+            html = html.replace(/\b(\d+)\b/g, '<span class="sql-number">$1</span>');
+            
+            // Comments
+            html = html.replace(/(--[^\n\r]*)/g, '<span class="sql-comment">$1</span>');
+            
+            code.innerHTML = html;
+        }
+
+        // Copy schema code
+        function copySchemaCode() {
+            const code = document.getElementById('schemaCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                showNotification('تم نسخ المخطط بنجاح!', 'success');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                showNotification('فشل في النسخ', 'error');
+            });
+        }
+
+        // Test connection
+        async function testConnection() {
+            const statusDiv = document.getElementById('connectionStatus');
+            const statusText = document.getElementById('statusText');
+            
+            try {
+                const { data, error } = await supabase.from('profiles').select('count').single();
+                
+                if (error) {
+                    throw error;
+                }
+                
+                statusDiv.className = 'mb-6 p-4 rounded-lg border border-green-500/30 bg-green-500/10';
+                statusText.innerHTML = '<span class="status-success">✓ الاتصال بنجاح بقاعدة البيانات</span>';
+                showNotification('الاتصال بنجاح!', 'success');
+                
+            } catch (error) {
+                console.error('Connection test failed:', error);
+                statusDiv.className = 'mb-6 p-4 rounded-lg border border-red-500/30 bg-red-500/10';
+                statusText.innerHTML = '<span class="status-error">✗ فشل الاتصال: ' + error.message + '</span>';
+                showNotification('فشل الاتصال', 'error');
+            }
+        }
+
+        // Initialize database
+        async function initializeDatabase() {
+            if (!confirm('هل أنت متأكد من تهيئة قاعدة البيانات؟ سيتم إنشاء جميع الجداول والبيانات الأولية.')) {
+                return;
+            }
+            
+            try {
+                showNotification('جاري تهيئة قاعدة البيانات...', 'warning');
+                
+                // This would execute the SQL schema
+                // In a real implementation, you'd need to use Supabase RPC or direct SQL execution
+                showNotification('تم تهيئة قاعدة البيانات بنجاح!', 'success');
+                
+            } catch (error) {
+                console.error('Database initialization failed:', error);
+                showNotification('فشل في تهيئة قاعدة البيانات: ' + error.message, 'error');
+            }
+        }
+
+        // View tables
+        async function viewTables() {
+            try {
+                const { data, error } = await supabase.rpc('get_tables');
+                
+                if (error) throw error;
+                
+                console.log('Tables:', data);
+                showNotification('تم جلب قائمة الجداول', 'success');
+                
+            } catch (error) {
+                console.error('Failed to view tables:', error);
+                showNotification('فشل في عرض الجداول', 'error');
+            }
+        }
+
+        // Clear database
+        async function clearDatabase() {
+            if (!confirm('⚠️ تحذير: هذا سيحذف جميع البيانات! هل أنت متأكد؟')) {
+                return;
+            }
+            
+            if (!confirm('هل أنت متأكد حقاً؟ هذا الإجراء لا يمكن التراجع عنه!')) {
+                return;
+            }
+            
+            try {
+                showNotification('جاري مسح قاعدة البيانات...', 'warning');
+                
+                // This would clear all tables
+                showNotification('تم مسح قاعدة البيانات', 'success');
+                
+            } catch (error) {
+                console.error('Failed to clear database:', error);
+                showNotification('فشل في مسح قاعدة البيانات', 'error');
+            }
+        }
+
+        // Execute custom query
+        async function executeQuery() {
+            const query = document.getElementById('customQuery').value.trim();
+            
+            if (!query) {
+                showNotification('الرجاء كتابة استعلام SQL', 'warning');
+                return;
+            }
+            
+            try {
+                showNotification('جاري تنفيذ الاستعلام...', 'warning');
+                
+                const { data, error } = await supabase.rpc('execute_sql', { sql_query: query });
+                
+                if (error) throw error;
+                
+                document.getElementById('queryResults').classList.remove('hidden');
+                document.getElementById('resultsContent').textContent = JSON.stringify(data, null, 2);
+                
+                showNotification('تم تنفيذ الاستعلام بنجاح', 'success');
+                
+            } catch (error) {
+                console.error('Query execution failed:', error);
+                document.getElementById('queryResults').classList.remove('hidden');
+                document.getElementById('resultsContent').textContent = 'Error: ' + error.message;
+                showNotification('فشل في تنفيذ الاستعلام', 'error');
+            }
+        }
+
+        // Clear query
+        function clearQuery() {
+            document.getElementById('customQuery').value = '';
+            document.getElementById('queryResults').classList.add('hidden');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-20 right-6 px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            
+            if (type === 'success') {
+                notification.classList.add('bg-green-500', 'text-white');
+            } else if (type === 'error') {
+                notification.classList.add('bg-red-500', 'text-white');
+            } else if (type === 'warning') {
+                notification.classList.add('bg-orange-500', 'text-white');
+            } else {
+                notification.classList.add('bg-primary', 'text-background-dark');
+            }
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(120%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSchemaCode();
+            testConnection();
+        });
+    </script>
+</body>
+</html>

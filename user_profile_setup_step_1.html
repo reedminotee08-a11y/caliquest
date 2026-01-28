@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile Setup - Step 1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#06e8f9",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2123",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .glow-ring {
+            box-shadow: 0 0 15px rgba(6, 232, 249, 0.3);
+        }
+        .interest-card.selected {
+            border-color: #06e8f9;
+            background-color: rgba(6, 232, 249, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-10 py-3 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] dark:text-white text-slate-900">CaliLevel Up</h2>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-white/60 text-sm font-medium">Draft Saved</span>
+<div class="h-8 w-[1px] bg-white/10"></div>
+<button class="text-white/80 hover:text-white">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<main class="max-w-[800px] mx-auto px-6 py-12">
+<!-- Progress Stepper -->
+<div class="flex flex-col gap-3 mb-12">
+<div class="flex gap-6 justify-between items-center">
+<div class="flex gap-8">
+<div class="flex flex-col">
+<p class="text-primary text-sm font-bold leading-normal">STEP 1</p>
+<p class="text-white text-base font-medium leading-normal">Identity</p>
+</div>
+<div class="flex flex-col opacity-40">
+<p class="text-white text-sm font-bold leading-normal">STEP 2</p>
+<p class="text-white text-base font-medium leading-normal">Level</p>
+</div>
+<div class="flex flex-col opacity-40">
+<p class="text-white text-sm font-bold leading-normal">STEP 3</p>
+<p class="text-white text-base font-medium leading-normal">Goals</p>
+</div>
+</div>
+<p class="text-white/60 text-sm font-normal">Next: Strength Assessment</p>
+</div>
+<div class="rounded-full bg-white/10 h-2 w-full mt-2 overflow-hidden">
+<div class="h-full rounded-full bg-primary shadow-[0_0_10px_rgba(6,232,249,0.5)]" style="width: 33.33%;"></div>
+</div>
+</div>
+<!-- Headline -->
+<div class="text-center mb-10">
+<h1 class="text-white tracking-light text-[36px] font-bold leading-tight">Create Your Athlete Profile</h1>
+<p class="text-white/60 text-lg mt-2">Welcome to the journey. Tell us who you are.</p>
+</div>
+<!-- Profile Picture Upload -->
+<div class="flex justify-center mb-12">
+<div class="relative group">
+<div class="size-40 rounded-full border-4 border-primary glow-ring bg-white/5 flex items-center justify-center overflow-hidden relative">
+<img alt="Generic user profile placeholder avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvwOSofzROFvBHWL0q0b_ihq2S1-12RKkJl2fxxPG1hw8QiBH7mwNSBR2MyB4aS3WXnXaA75q-UgOfgCvjKb0x_FGWFU8KEHh-f1U_BI7d0-S5YA0tS0ysp2qeYj-GbJlawn_1zWaCSeyuRFKC99wXtzbIalA7YaXuziWtkhtSgFPE5QIwuksTm0yr1AAdzKAUWrq7Q8_c9pqnCM55vwOmYGmUvNiLIW9DGJf17tHnH-t_CqVkGiGDckaMoOWuFaW_8VUog_FEGmwf"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-white text-3xl">photo_camera</span>
+</div>
+</div>
+<button class="absolute bottom-2 right-2 size-10 bg-primary text-background-dark rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px] font-bold">edit</span>
+</button>
+<div class="mt-4 text-center">
+<p class="text-white text-sm font-medium">Athlete ID: #8291</p>
+<p class="text-white/40 text-xs">Max size 2MB (JPG, PNG)</p>
+</div>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="grid grid-cols-1 gap-6 max-w-[600px] mx-auto">
+<div class="flex flex-col gap-2">
+<label class="text-white text-sm font-semibold uppercase tracking-wider px-1">Full Athlete Name</label>
+<input class="form-input flex w-full rounded-lg text-white focus:outline-0 focus:ring-1 focus:ring-primary border border-white/10 bg-white/5 focus:border-primary h-14 placeholder:text-white/20 p-4 text-lg font-normal" placeholder="e.g. Victor Han" value=""/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-white text-sm font-semibold uppercase tracking-wider px-1">A Brief Bio</label>
+<textarea class="form-input flex w-full rounded-lg text-white focus:outline-0 focus:ring-1 focus:ring-primary border border-white/10 bg-white/5 focus:border-primary min-h-[120px] placeholder:text-white/20 p-4 text-base font-normal resize-none" placeholder="What motivates you to train? Your experience level, favorite park, or current PRs..."></textarea>
+</div>
+<!-- Interests Selection -->
+<div class="mt-4">
+<label class="text-white text-sm font-semibold uppercase tracking-wider px-1 block mb-4">Focus Areas &amp; Skills</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<div class="interest-card cursor-pointer border border-white/10 bg-white/5 rounded-lg p-4 flex flex-col items-center gap-2 hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+<span class="text-sm font-medium">Muscle Up</span>
+</div>
+<div class="interest-card cursor-pointer border border-primary bg-primary/10 rounded-lg p-4 flex flex-col items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-primary">front_hand</span>
+<span class="text-sm font-medium">Handstand</span>
+</div>
+<div class="interest-card cursor-pointer border border-white/10 bg-white/5 rounded-lg p-4 flex flex-col items-center gap-2 hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-primary">accessibility_new</span>
+<span class="text-sm font-medium">Front Lever</span>
+</div>
+<div class="interest-card cursor-pointer border border-primary bg-primary/10 rounded-lg p-4 flex flex-col items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-primary">straighten</span>
+<span class="text-sm font-medium">Planche</span>
+</div>
+<div class="interest-card cursor-pointer border border-white/10 bg-white/5 rounded-lg p-4 flex flex-col items-center gap-2 hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<span class="text-sm font-medium">Explosive</span>
+</div>
+<div class="interest-card cursor-pointer border border-white/10 bg-white/5 rounded-lg p-4 flex flex-col items-center gap-2 hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-primary">timer</span>
+<span class="text-sm font-medium">Endurance</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-10 flex flex-col gap-4">
+<button class="w-full h-14 bg-primary text-background-dark text-lg font-bold rounded-lg shadow-[0_0_20px_rgba(6,232,249,0.3)] hover:scale-[1.01] transition-all flex items-center justify-center gap-2">
+                    Next: Level Assessment
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full py-2 text-white/40 text-sm hover:text-white transition-colors">
+                    Skip for now
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer Decoration -->
+<div class="fixed bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+</body></html>

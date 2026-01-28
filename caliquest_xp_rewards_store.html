@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CaliQuest XP Rewards Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f0df2",
+                        "cyan-glow": "#00f2ff",
+                        "background-light": "#f7f5f8",
+                        "background-dark": "#0a0a0a",
+                        "surface-dark": "#191022",
+                        "glass": "rgba(255, 255, 255, 0.03)",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border: 1px solid rgba(127, 13, 242, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(127, 13, 242, 0.3);
+        }
+        .cyan-glow-text {
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.6);
+        }
+        .xp-badge-glow {
+            box-shadow: 0 0 20px rgba(127, 13, 242, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">fitness_center</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">CaliQuest <span class="text-primary text-sm block leading-none">Armoury</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-white/70 hover:text-white transition-colors font-medium" href="#">Training Map</a>
+<a class="text-white/70 hover:text-white transition-colors font-medium" href="#">Leaderboard</a>
+<a class="text-white border-b-2 border-primary pb-1 font-bold" href="#">Armoury</a>
+<a class="text-white/70 hover:text-white transition-colors font-medium" href="#">Profile</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-dark border border-white/10 rounded-full px-4 py-2 gap-2">
+<span class="material-symbols-outlined text-white/50">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-white w-32 xl:w-48" placeholder="Search gear..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase tracking-widest text-white/50 font-bold">Balance</span>
+<div class="flex items-center gap-1">
+<span class="text-cyan-glow font-bold text-lg cyan-glow-text">15,420</span>
+<span class="text-xs font-bold text-cyan-glow/80">XP</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-primary p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="User profile avatar icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_fyNzlAmMubWx2NgPeB-gEwbF_8uWduNHJ6PH3OSM4NoB6l0a6bDhaL6Y210dByxFs2cHZRbd8VNBUYgHr-0G3aZZsNqNViMUMLhyBmu8K8Z8yUNtcJn5hAI4TcOTqG_Fu64WzOlwSGN3pCrln5TAh862t3Hd3T_SjFJtJoHIRExccK2dn7t0VkMSEubRx8qmTKWB-9Vvw5fzzr1lZZsFxq8LroG__M0-SYYSJEmIq_dMFQH2FfLgz6zxUxNssfcZy9YWEEzl7OpG')"></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-6 py-12">
+<!-- Hero Balance Section -->
+<section class="mb-12">
+<div class="flex flex-col items-center text-center space-y-4">
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight">XP Rewards Store</h1>
+<p class="text-white/60 max-w-xl mx-auto">Enhance your digital presence. Unlock premium skins, frames, and effects earned through your sweat and dedication.</p>
+<div class="mt-8 flex flex-wrap justify-center gap-4">
+<div class="glass-card rounded-2xl p-6 min-w-[240px] text-left relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/40 transition-all"></div>
+<p class="text-white/50 text-xs font-bold uppercase tracking-wider mb-1">Current Balance</p>
+<p class="text-3xl font-bold text-white cyan-glow-text">15,420 <span class="text-sm font-medium text-cyan-glow">XP</span></p>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[#0bda73] text-sm">trending_up</span>
+<span class="text-[#0bda73] text-sm font-bold">+1,250 earned today</span>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-6 min-w-[240px] text-left relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-cyan-glow/10 blur-3xl rounded-full"></div>
+<p class="text-white/50 text-xs font-bold uppercase tracking-wider mb-1">Items Unlocked</p>
+<p class="text-3xl font-bold text-white">24 / 120</p>
+<div class="mt-4 h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/5 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Filter Tabs -->
+<div class="flex items-center justify-center mb-10 overflow-x-auto pb-4">
+<div class="flex bg-surface-dark/50 border border-white/10 p-1.5 rounded-full gap-2">
+<button class="px-6 py-2 rounded-full bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20">All Items</button>
+<button class="px-6 py-2 rounded-full hover:bg-white/5 text-white/60 hover:text-white text-sm font-bold transition-all">Avatar Skins</button>
+<button class="px-6 py-2 rounded-full hover:bg-white/5 text-white/60 hover:text-white text-sm font-bold transition-all">Profile Frames</button>
+<button class="px-6 py-2 rounded-full hover:bg-white/5 text-white/60 hover:text-white text-sm font-bold transition-all">Skill Effects</button>
+</div>
+</div>
+<!-- Skins Section -->
+<div class="mb-12">
+<div class="flex items-center justify-between px-2 mb-6">
+<h2 class="text-2xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">person_check</span>
+                    Avatar Skins
+                </h2>
+<a class="text-sm font-bold text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Item Card 1 -->
+<div class="glass-card rounded-3xl p-4 flex flex-col group">
+<div class="relative aspect-square rounded-2xl bg-gradient-to-br from-surface-dark to-black mb-4 overflow-hidden border border-white/5">
+<div class="absolute top-3 right-3 z-10">
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-full border border-primary/30 uppercase tracking-tighter">Legendary</span>
+</div>
+<div class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<div class="w-48 h-48 bg-cover bg-center" data-alt="Cybernetic futuristic athletic ninja avatar skin" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAoK0lVUu46tKy2eYnQAFzjlprFOHtaUWoTCW8_TyD5Ztgvam6JVmgK4kMAGWm9taaPHH2iWdvF3mNc3D_f6Vwjq3S-nD-tYLXkc26LexXiTuSgXOqS0KGcqEw-SfEedheQKJvwUYhkFgJ_fhaqXELmsyzJxXyMvqHb2N3nwIlYA4rgonQV1Z88hMh02tJ0fQuLeJYZceh2nW5kvoEJ5ImV9DzuUt2hFgH9giEsUV5KEnY6YpYDefzN16RxjDCfSgB053Nag-AGJwbc')"></div>
+</div>
+</div>
+<div class="px-2 pb-2">
+<h3 class="text-lg font-bold mb-1">Shadow Ninja</h3>
+<p class="text-white/40 text-xs mb-4">Embrace the darkness with stealth-enhancing visuals.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="text-cyan-glow font-bold">12,500</span>
+<span class="text-[10px] text-white/40 font-bold">XP</span>
+</div>
+<button class="bg-primary hover:bg-primary/80 text-white px-6 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 xp-badge-glow">
+                                Buy Item
+                            </button>
+</div>
+</div>
+</div>
+<!-- Item Card 2 (Equipped State) -->
+<div class="glass-card rounded-3xl p-4 flex flex-col group">
+<div class="relative aspect-square rounded-2xl bg-gradient-to-br from-surface-dark to-black mb-4 overflow-hidden border border-white/5">
+<div class="absolute top-3 right-3 z-10">
+<span class="bg-white/10 text-white/60 text-[10px] font-bold px-2 py-1 rounded-full border border-white/20 uppercase tracking-tighter">Common</span>
+</div>
+<div class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<div class="w-48 h-48 bg-cover bg-center opacity-80" data-alt="Standard training outfit avatar skin" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7fNSEpzgCA0GQ7Nam6mrmei9aZh_lv6RFBhHsWRN9DszRmqEoH1pRk7-ZxOMX4dZ4xYPlDuc9jK5j3tVClevOSqnj-rk-JAr07UhThJUkcdkXFx_x4a3iIhOaGjdcC90hIAv5siOKUsNiQNkWeHk-tnqohvF7jV9sOHg6zGM1K9A9-ONX84hmWzOSmHOpbpv_kXDHQeJ5cHrMBwkMpfpi0LK-fjdGcOSMyfrZXuAUPvAZuB57XFUQKM6ea1WfsrDXfMIRMuK3ojEJ')"></div>
+</div>
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-white">check_circle</span>
+</div>
+</div>
+<div class="px-2 pb-2">
+<h3 class="text-lg font-bold mb-1">Standard Pro</h3>
+<p class="text-white/40 text-xs mb-4">The classic kit for the dedicated athlete.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="text-white/40 italic text-sm">Owned</span>
+</div>
+<button class="bg-cyan-glow/20 border border-cyan-glow/50 text-cyan-glow px-6 py-2 rounded-xl text-sm font-bold cursor-default">
+                                Equipped
+                            </button>
+</div>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="glass-card rounded-3xl p-4 flex flex-col group">
+<div class="relative aspect-square rounded-2xl bg-gradient-to-br from-surface-dark to-black mb-4 overflow-hidden border border-white/5">
+<div class="absolute top-3 right-3 z-10">
+<span class="bg-orange-500/20 text-orange-400 text-[10px] font-bold px-2 py-1 rounded-full border border-orange-500/30 uppercase tracking-tighter">Rare</span>
+</div>
+<div class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<div class="w-48 h-48 bg-cover bg-center" data-alt="Energy-pulsing calisthenics skin with glow effects" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCAFs1RsC6NU1TUp1mj5hUeNzGWy-FUU-kY5UyX4PmhhA6a70Ah1It8HjqKSHCquVpacKfLgbZeRl1ms9Nt78TSSVumF-z8Aa5ulGWwRHtLMNQoChte74qkeKKo9asN6cbfiBjPlCSyksa1BIZ6avwK9bUXfaf-y-xObFyRTFNXMHV0oTsqIuRuuodaNlYM_AH8r33_--bfkWIlG5yrhU6l8tRUyuQw1jbnV3Hgf2G_ScWI8Zp6Zoy6SoPG-uAG3TRPkMHYz96V7ksS')"></div>
+</div>
+</div>
+<div class="px-2 pb-2">
+<h3 class="text-lg font-bold mb-1">Cyber Athlete</h3>
+<p class="text-white/40 text-xs mb-4">High-performance synthetic fibers with neon trim.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="text-cyan-glow font-bold">5,000</span>
+<span class="text-[10px] text-white/40 font-bold">XP</span>
+</div>
+<button class="bg-primary hover:bg-primary/80 text-white px-6 py-2 rounded-xl text-sm font-bold transition-all active:scale-95">
+                                Buy Item
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Profile Frames & Effects Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
+<!-- Frames -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">frame_person</span>
+                        Profile Frames
+                    </h2>
+</div>
+<div class="space-y-4">
+<div class="glass-card rounded-2xl p-4 flex items-center gap-4 group">
+<div class="w-20 h-20 rounded-xl bg-surface-dark border-2 border-cyan-glow flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Neon pulse glowing profile border frame" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCaBnpLsATzcpfOlM544c-_uWdQO78WyqgT7Mcg_wgyybNw_J9XS7BUys-pyQXPV6hBeA8ahDqV0C900r2dv6RhAmhr8CoCiR0cpT9pbjIJzV7bo69rihdqQFV3-5jocm7-T84d1VQqjgqcpT-OO6Mh73z7OxvMrTyLUf2A4ntF1GvzT1BT80twUvIB2xGAYePT4RT4TCdAsKgovqqYbuqLmU5rr3MTRiXuXgZIBqlQCrIb16m2VnHvHKWOpiqOlnpE8VL30TMM8vvM')"></div>
+</div>
+<div class="flex-1">
+<h4 class="font-bold">Neon Pulse</h4>
+<div class="flex items-center gap-2">
+<span class="text-cyan-glow text-sm font-bold">2,500 XP</span>
+<span class="text-[10px] text-white/30">• Rare</span>
+</div>
+</div>
+<button class="px-4 py-2 bg-white/5 hover:bg-primary text-white text-xs font-bold rounded-lg transition-colors">Buy</button>
+</div>
+<div class="glass-card rounded-2xl p-4 flex items-center gap-4 group border-primary/40">
+<div class="w-20 h-20 rounded-xl bg-surface-dark border-2 border-primary flex items-center justify-center overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Diamond edge premium profile border frame" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKF2LGZKkSRaEwoqOeLpiw-_EQ0vH0LtOKb3HR1ujj9WZZyeYTB6e2JYEpC3AZbUY5GI3Bb4NJSVQ7S6yZGxp3gAwzzBe-zOuhA7mLpkY4Ow2HhZFSJXo3L9UltozAHnUw5h4ieQIyQpLyRGIa-Zq-8ZafGt2wShbourdNGPM30yBIrY-ZPYPO37MCmPItJfF6Ha7nL55JZrTaNCxKUXjIGZ_Pv9T1zXxd8cXaYHt77JnpdTheW4IZ-rqAFnctGkkDFo5UuFOQg0Vs')"></div>
+</div>
+<div class="flex-1">
+<h4 class="font-bold">Diamond Edge</h4>
+<div class="flex items-center gap-2">
+<span class="text-white/40 text-sm font-bold italic">Owned</span>
+</div>
+</div>
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg transition-colors">Equip</button>
+</div>
+</div>
+</div>
+<!-- Skill Effects -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+                        Skill Effects
+                    </h2>
+</div>
+<div class="space-y-4">
+<div class="glass-card rounded-2xl p-4 flex items-center gap-4 group">
+<div class="w-20 h-20 rounded-xl bg-surface-dark flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Lightning bolts effect animation for pull ups" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhPi35qSaqgqNjC2SMMr1nX-LiXTZAN4v5tMg9hK0eeDUL297Hru-0y4z4_6lGAllGVq_p8gtZwsCkbZT5RefUivTktF4KAHJdM0XNCANAfNJHe0RhAUiGmnk3fF06IK_B2000oPSYMwH6Ytzxkr0cHJbyN4O_jqPJPrR0gQI_VY6O-DAelV2wJe5nGZnRJ7IWIXvM9Z9m52kVTJxzrZLI-m-9toolQtX-vfdP7z5qbYYUIuuMOhlRBiwOSHEEC27AYfU-dVDtJVX2')"></div>
+</div>
+<div class="flex-1">
+<h4 class="font-bold">Lightning Pull-ups</h4>
+<div class="flex items-center gap-2">
+<span class="text-cyan-glow text-sm font-bold">8,000 XP</span>
+<span class="text-[10px] text-white/30">• Legendary</span>
+</div>
+</div>
+<button class="px-4 py-2 bg-white/5 hover:bg-primary text-white text-xs font-bold rounded-lg transition-colors">Buy</button>
+</div>
+<div class="glass-card rounded-2xl p-4 flex items-center gap-4 group">
+<div class="w-20 h-20 rounded-xl bg-surface-dark flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Ghostly trail effect for muscle up movements" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQHZkNKScPHRtSDHcQAFOqaHFT3VULlyOKSSoxYozrx7PdjksQ6BAzooApT3WAN__P32N4fEjVR-85cpLg2Ml_Lee0BzVPxGLHCfrNjOvZfcBnWAe-aPK4SAv8Y5kX_RgLM6O5ExXAI4ckya3tcjRivp7TwKsjtgWEtiyzx3hWSlslTYxLUofJ8WFClvAsoZnqtGub1N0fn94rcHiZiE1gEgh1GGn7z3cCkqCzlqpmVNnP24LkoB3Wm6Tk7kcP7jkgZx-rNXntgAfp')"></div>
+</div>
+<div class="flex-1">
+<h4 class="font-bold">Ghost Muscle-up</h4>
+<div class="flex items-center gap-2">
+<span class="text-cyan-glow text-sm font-bold">4,200 XP</span>
+<span class="text-[10px] text-white/30">• Rare</span>
+</div>
+</div>
+<button class="px-4 py-2 bg-white/5 hover:bg-primary text-white text-xs font-bold rounded-lg transition-colors">Buy</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Stats -->
+<footer class="mt-20 border-t border-white/10 bg-surface-dark/30 py-10">
+<div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div>
+<h5 class="font-bold">Level 42 Training Master</h5>
+<p class="text-white/40 text-xs uppercase tracking-widest">Next rank at 20,000 XP</p>
+</div>
+</div>
+<div class="flex gap-12">
+<div class="text-center">
+<p class="text-white/40 text-xs font-bold mb-1 uppercase">Skins</p>
+<p class="text-xl font-bold">12/45</p>
+</div>
+<div class="text-center">
+<p class="text-white/40 text-xs font-bold mb-1 uppercase">Effects</p>
+<p class="text-xl font-bold">4/20</p>
+</div>
+<div class="text-center">
+<p class="text-white/40 text-xs font-bold mb-1 uppercase">Frames</p>
+<p class="text-xl font-bold">8/55</p>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

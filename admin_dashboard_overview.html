@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CaliQuest Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00eeff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #20484b;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex flex-col justify-between bg-white dark:bg-[#0f2224] border-r border-slate-200 dark:border-[#20484b] p-4">
+<div class="flex flex-col gap-8">
+<div class="flex gap-3 items-center px-2">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">fitness_center</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-none">CaliQuest</h1>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs font-medium">Admin Console</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<p class="text-sm font-semibold">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#20484b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">map</span>
+<p class="text-sm font-medium">Maps</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#20484b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">layers</span>
+<p class="text-sm font-medium">Stages</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#20484b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<p class="text-sm font-medium">Users</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#20484b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">trending_up</span>
+<p class="text-sm font-medium">Analytics</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg h-11 px-4 bg-primary text-[#0f2224] text-sm font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>New Quest</span>
+</button>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-[#20484b] rounded-lg text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-background-light dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto p-8">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black tracking-tight">Dashboard Overview</h1>
+<p class="text-slate-500 dark:text-[#8dcace] text-base font-normal">Manage your world maps, player progression, and system health.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 rounded-lg h-10 px-4 bg-white dark:bg-[#20484b] border border-slate-200 dark:border-transparent text-slate-900 dark:text-white text-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Report</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg h-10 px-4 bg-primary text-[#0f2224] text-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">map</span>
+<span>Quick Add Map</span>
+</button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-transparent border border-slate-200 dark:border-[#2e676b] shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Total Slayers</p>
+<div class="flex items-baseline gap-2">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">12,842</p>
+<p class="text-emerald-500 text-sm font-bold">+12%</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-transparent border border-slate-200 dark:border-[#2e676b] shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Active Quests</p>
+<div class="flex items-baseline gap-2">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">48</p>
+<p class="text-emerald-500 text-sm font-bold">+5%</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-transparent border border-slate-200 dark:border-[#2e676b] shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Global XP Pool</p>
+<div class="flex items-baseline gap-2">
+<p class="text-slate-900 dark:text-white text-3xl font-bold">2.4M</p>
+<p class="text-emerald-500 text-sm font-bold">+18%</p>
+</div>
+</div>
+</div>
+<!-- Top Row: Chart & Leaderboard -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Growth Chart -->
+<div class="lg:col-span-2 flex flex-col rounded-xl border border-slate-200 dark:border-[#2e676b] bg-white dark:bg-transparent overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-[#2e676b]">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold">User Growth Trend</h2>
+<p class="text-slate-500 dark:text-[#8dcace] text-sm font-medium">Daily registrations across all regions</p>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div class="flex items-baseline gap-2">
+<p class="text-slate-900 dark:text-white text-4xl font-bold tracking-tight">850</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-sm">New Users this month</p>
+</div>
+<div class="h-48 w-full mt-4">
+<svg fill="none" height="100%" preserveaspectratio="none" viewbox="0 0 472 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#neonGradient)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#00eeff" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient id="neonGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00eeff" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#00eeff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-between px-2">
+<p class="text-slate-400 dark:text-[#8dcace] text-xs font-bold uppercase">Week 1</p>
+<p class="text-slate-400 dark:text-[#8dcace] text-xs font-bold uppercase">Week 2</p>
+<p class="text-slate-400 dark:text-[#8dcace] text-xs font-bold uppercase">Week 3</p>
+<p class="text-slate-400 dark:text-[#8dcace] text-xs font-bold uppercase">Week 4</p>
+</div>
+</div>
+</div>
+<!-- XP Leaderboard -->
+<div class="flex flex-col rounded-xl border border-slate-200 dark:border-[#2e676b] bg-white dark:bg-transparent overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-[#2e676b]">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold">Global Leaderboard</h2>
+</div>
+<div class="flex-1 overflow-y-auto max-h-[360px] custom-scrollbar">
+<div class="flex flex-col">
+<!-- Leader 1 -->
+<div class="flex items-center gap-4 p-4 border-b border-slate-100 dark:border-[#20484b] hover:bg-slate-50 dark:hover:bg-[#20484b]/30">
+<div class="w-8 text-center font-bold text-primary">#1</div>
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="User avatar of first place player" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAM53gR65oeRnDVQ9btfXOQ8DVDgmWBr7IX5tLdhkOz5wjdHxwYZ3T1e2DZmQtr7B95KFkDUHBFmmLHAdZKubo1XMHCvdWL4tTZiSrIBG5ZXkMILWYHLQb4jjGOflDTfu7tL5D6nBfH5e3gpURts6m2HeH6vcBF3wjcT4H9o7KiTCVBCk7dlZ6Ii-xD5-f0htXVdtsvK2znq_BNHjqkKAOUGEz4puLk-Hm-b6rBm70YihM1CCVXvDzQ6PRennquBcfc-qOtzjPCHeqw');"></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-bold">IronClad_99</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs">Level 42 Master</p>
+</div>
+<p class="text-primary font-bold text-sm">85.4k XP</p>
+</div>
+<!-- Leader 2 -->
+<div class="flex items-center gap-4 p-4 border-b border-slate-100 dark:border-[#20484b] hover:bg-slate-50 dark:hover:bg-[#20484b]/30">
+<div class="w-8 text-center font-bold text-slate-400">#2</div>
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="User avatar of second place player" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXmcZr49EPOcD0ycyANH2Gl_ZDxkhv2CryLZ38PsOI9hIrK654G4k7r3_7KrYo3O9iOYsvHxRdWFMmPLLE_9Fs2ERvVjFmzy4kZqcTVGuMd7Dst9l7IPn4fKjuswT6gCu5-S-8CpWXdRcL3HG6WSJMqjXWnT2ch-eOvMC0Dd6sQA_tB_2-bViJ6T3LOl7yFhR_BNM3ddwMgu33EcPjRpptZmwzqqzK7OKQS4j92__tHoeJGuTBgQcUOWngYBx-ILedp-_Ak3b7PdpR');"></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-bold">GymBeast_X</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs">Level 39 Elite</p>
+</div>
+<p class="text-primary font-bold text-sm">79.2k XP</p>
+</div>
+<!-- Leader 3 -->
+<div class="flex items-center gap-4 p-4 border-b border-slate-100 dark:border-[#20484b] hover:bg-slate-50 dark:hover:bg-[#20484b]/30">
+<div class="w-8 text-center font-bold text-slate-400">#3</div>
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="User avatar of third place player" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiiBjGZ59gaJxZ_38h6G5sBrXDpSHNssKc4PHOoD9tOCwmtQNAJCVt3gww_cYpyPKLpXsj2j2yZJz5FKO__a8u-ym2Q0kyZz4yHJ58KU3JOr9hBHDSyL8rtq4b9GMeIK6QX4j2HKGT29gmFPiD837BrcWg94QvP6qrg2q3lx57cZJ6fMCGc7Qe_s9oh-SYTQC4dal-MxdWrEQzNOKW893iNripdwaHGTqpSBrRvE7CAY4r3L08lqehQdyNmQwpv8NC6mdUglmTz8z8');"></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-bold">CaliQueen</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs">Level 38 Elite</p>
+</div>
+<p class="text-primary font-bold text-sm">76.8k XP</p>
+</div>
+<!-- Leader 4 -->
+<div class="flex items-center gap-4 p-4 border-b border-slate-100 dark:border-[#20484b] hover:bg-slate-50 dark:hover:bg-[#20484b]/30">
+<div class="w-8 text-center font-bold text-slate-400">#4</div>
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="User avatar of fourth place player" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDeaMaxwrhV0TbZ1suMWqLmUKf3kxEzM7nE8jPK_kY8VyD8znw9f7lXYf3V5_poALLOBXBNp741tuawSmCH_pE4N-RAnXJCdPu-EkJPEcNv3m3D7uMHUsnCLpp4-4MeVxgmB0436S8FG_B2vn3FB-uHAtlqALqwj8EWH50r9G8pK33pCSjptHVFAvM3ak0jVvSuMR2Tn_ACXZQcrMSODyKj475oHaWcj6oaNiJiI35jFmZ2OZ8AH7IukcP_IMhwJK4UkE1ap3OP4XKl');"></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-bold">TitanPush</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs">Level 35 Pro</p>
+</div>
+<p class="text-primary font-bold text-sm">72.1k XP</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Maps Management Table -->
+<div class="rounded-xl border border-slate-200 dark:border-[#2e676b] bg-white dark:bg-transparent overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-[#2e676b] flex justify-between items-center bg-slate-50 dark:bg-transparent">
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Active Maps &amp; Stages</h2>
+<p class="text-slate-500 dark:text-[#8dcace] text-sm">Review map popularity and difficultly scaling.</p>
+</div>
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="bg-white dark:bg-[#1a3a3d] border border-slate-200 dark:border-[#2e676b] rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-primary focus:border-primary outline-none text-white w-64" placeholder="Search maps..." type="text"/>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-100 dark:bg-[#20484b]/20">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#8dcace]">Map Name</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#8dcace]">Difficulty</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#8dcace]">Stages</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#8dcace]">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#8dcace]">Completion</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#8dcace] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-[#2e676b]">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-[#20484b]/10 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-cover bg-center" data-alt="Vibrant Venice Beach calisthenics park" data-location="Los Angeles" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_W-WTP7-mTBi49JrLubr0zruzeq_p07H23sgdfUnFIyoWkpOGudnmV3LYLLPiyX2c2Z6bTfLh8jCivZ8jzz8lKkw2N7JD48Ac69ph9KhbjX7FX_SrL2ZeHObcVxn-cXsQYlNkFpetqOBwcUg59fHwQEncC2spOe2wMfCxR0mf_whP3_79Te8j3KE4ZmdOvwgX7q6k1fN7QO9wq0EoY-EWOM82GKnVaM5k4Sv4Ex9rKOEEPJrh3pVCSirQCMyiHMGaWFW02-rG69nB');"></div>
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">Venice Beach</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs">Coastal Region</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400">Beginner</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">12 Stages</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-emerald-500">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold">Live</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-full bg-slate-200 dark:bg-[#1a3a3d] rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 78%"></div>
+</div>
+<p class="text-[10px] text-slate-400 dark:text-[#8dcace] mt-1 font-bold">78% Rate</p>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="size-8 rounded bg-slate-100 dark:bg-[#20484b] flex items-center justify-center text-slate-600 dark:text-white hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="size-8 rounded bg-slate-100 dark:bg-[#20484b] flex items-center justify-center text-slate-600 dark:text-white hover:text-red-500">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-[#20484b]/10 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-cover bg-center" data-alt="Industrial style workout park in Berlin" data-location="Berlin" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFXMM-m_0OjRdr5BCd11GTs4C9MqvLhfue5JclnyG_IYZapfTTAL385RZcogi1JNh2IIcUfsTKcMuFULCCqRJ2OW5Ej-_T82jgvPUR1HcnFhCkjUfD15MzV02sgy-XQnZyThFUYJvjIIk28b-TQC_kfRbd8GdtngYnIUR0kDozlFXx9Bbbvy4vbQqderOMNsYEmtI1rGuqUt_eROaAj7mb5IQ0hDoswBT8mCRt6C4qMk4p009wy-6nqg51oZGJJsPEQbTZlV4wJyls');"></div>
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">The Iron Yard</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs">Berlin Industrial</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-400">Intermediate</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">10 Stages</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-emerald-500">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold">Live</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-full bg-slate-200 dark:bg-[#1a3a3d] rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 45%"></div>
+</div>
+<p class="text-[10px] text-slate-400 dark:text-[#8dcace] mt-1 font-bold">45% Rate</p>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="size-8 rounded bg-slate-100 dark:bg-[#20484b] flex items-center justify-center text-slate-600 dark:text-white hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="size-8 rounded bg-slate-100 dark:bg-[#20484b] flex items-center justify-center text-slate-600 dark:text-white hover:text-red-500">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-[#20484b]/10 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-cover bg-center" data-alt="Sleek neon workout plaza in Tokyo" data-location="Tokyo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIgOs1kyoo2NtDtg98x7eXiCM4yO9eKDCBVerZaO_ZfaxhR0uXml4n1KtJVF4QXoFmc1MhogflTnhxPBPxap4a4XoPIOhx9w-nBLv5f7Vo8zk-ej6LltJhvNuVIfJIhx3G0LFQ-sdqj013ArwbJEOtpOHrqhFASiOtE3mAMDbgN-a5JkGxelU5TLbMabPXX4uBZ9Etg4t4pKys_f98uXI4wjDT92FVMb6Qdqu-PUh4y6-aEBpR2SYLUgmaSrEJJPvTTK_aHlvqx2D7');"></div>
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">Skyline Summit</p>
+<p class="text-slate-500 dark:text-[#8dcace] text-xs">Tokyo Heights</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400">Hardcore</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">8 Stages</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-400">
+<span class="size-2 rounded-full bg-slate-400"></span>
+<span class="text-xs font-bold">Draft</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-full bg-slate-200 dark:bg-[#1a3a3d] rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 0%"></div>
+</div>
+<p class="text-[10px] text-slate-400 dark:text-[#8dcace] mt-1 font-bold">0% Rate</p>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="size-8 rounded bg-slate-100 dark:bg-[#20484b] flex items-center justify-center text-slate-600 dark:text-white hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="size-8 rounded bg-slate-100 dark:bg-[#20484b] flex items-center justify-center text-slate-600 dark:text-white hover:text-red-500">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-slate-100 dark:border-[#2e676b] flex items-center justify-between">
+<p class="text-xs text-slate-500 dark:text-[#8dcace] font-medium tracking-wide">Showing 1-10 of 48 Quest Maps</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs font-bold border border-slate-200 dark:border-[#20484b] rounded text-slate-500 dark:text-white hover:bg-slate-50 dark:hover:bg-[#20484b]">Previous</button>
+<button class="px-3 py-1 text-xs font-bold bg-primary text-[#0f2224] rounded">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

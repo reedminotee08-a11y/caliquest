@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boss Level Success - Calisthenics Master</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00eeff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "boss-purple": "#7b2cbf",
+                        "boss-dark": "#1a0b2e",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .boss-gradient-bg {
+            background: radial-gradient(circle at center, #2d114d 0%, #0f2223 100%);
+        }
+        .particle-overlay {
+            background-image: radial-gradient(circle at 20% 30%, rgba(0, 238, 255, 0.05) 0%, transparent 20%),
+                              radial-gradient(circle at 80% 70%, rgba(123, 44, 191, 0.1) 0%, transparent 30%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 238, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen overflow-x-hidden font-display">
+<!-- Main Wrapper with Particle Effects Simulation -->
+<div class="relative min-h-screen boss-gradient-bg flex flex-col items-center">
+<div class="absolute inset-0 particle-overlay pointer-events-none"></div>
+<!-- Top Navigation -->
+<header class="w-full flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-10 py-3 z-50 bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Calisthenics Master</h2>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-white/70 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Training</a>
+<a class="text-white/70 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Library</a>
+<a class="text-white/70 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Community</a>
+<a class="text-white/70 hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Profile</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-white/5 hover:bg-white/10 text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-white/5 hover:bg-white/10 text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile avatar icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRhGlPfDKxJ0Dbs8dsDN7Vn9toybnL5fim2GONZy-XzhaEkWs5XyY55IS1P3Z3SUEhLRfZs7lfZxALSG_2RL9xwdj2wrpJ9ill9U5GIvMKfIKxjv03q9FcAVTcBAFFR-lucNLijwcwFeUi3Xe2wdjhgKPCz8f5aE_6LsKhWaBEXRAm4Y-OkmBjvFKy61kp2dI47g_RvooFQguK0bFDQ_GmO_eCZ_OaKej2MJltzbSBMLcij8YiyeugZuj4os-uODbIYqQGa06Jrwf9");'></div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="relative z-10 flex flex-col items-center max-w-[960px] w-full px-4 py-12">
+<!-- Boss Level Header -->
+<div class="text-center mb-4">
+<h4 class="text-primary text-sm font-bold leading-normal tracking-[0.2em] uppercase mb-2">Boss Level Clear</h4>
+<h1 class="text-white tracking-tight text-[48px] md:text-[64px] font-black leading-none drop-shadow-2xl">
+                    STAGE 10 COMPLETE
+                </h1>
+</div>
+<!-- Central Hero Badge Area -->
+<div class="w-full max-w-2xl py-8 flex flex-col items-center relative">
+<!-- Achievement Badge (Visual representation of skill) -->
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/20 blur-[60px] rounded-full scale-125 group-hover:bg-boss-purple/30 transition-all duration-700"></div>
+<div class="relative w-64 h-64 rounded-xl glass-card flex items-center justify-center border-2 border-primary/50 glow-cyan transform rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden">
+<div class="absolute inset-0 opacity-20 bg-cover bg-center" data-alt="Abstract geometric calisthenics pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmLm3Edpn1U_N_aHmoTwwGgBV3-M7XWP2DFUIYukVVw_QTRt3Or1hlZ9Au2kYFcnDQXZoDcwXK9kwKllmIaK12PQUF6HGfhsyrQ9HXW_y1RED8J-BzgxmRD6-Ai1VX1xuwMb_xEuGekIbqpnZLYnyihgWY37uclXMiPSdbKzOkiopPmM9SnF80T8ZI_WtppN7XcKz6i94QI5T2vlrqd3P_7HaKdw9NFeSPsCafvd0jfpMj_An8D5DcIvPphf44C6oUiNJgSRUzmgGe");'></div>
+<div class="flex flex-col items-center z-10">
+<span class="material-symbols-outlined text-[100px] text-primary drop-shadow-lg">fitness_center</span>
+<span class="text-xs font-bold tracking-[0.3em] text-primary/80 mt-2 uppercase">Elite Tier</span>
+</div>
+</div>
+<!-- Skill Unlocked Badge Label -->
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-boss-purple px-8 py-3 rounded-full border border-white/20 shadow-2xl z-20">
+<p class="text-white text-lg font-bold whitespace-nowrap tracking-wide uppercase">New Skill Unlocked</p>
+</div>
+</div>
+<div class="mt-16 text-center">
+<h2 class="text-white text-[32px] font-bold leading-tight tracking-tight mb-2">The Archer Pull-up</h2>
+<p class="text-white/60 text-lg max-w-lg mx-auto">You've mastered the lateral tension transition. This unlocked the path to Stage 11: The One-Arm Foundation.</p>
+</div>
+</div>
+<!-- XP and Rewards Section -->
+<div class="w-full max-w-3xl mt-8">
+<div class="glass-card p-6 rounded-xl relative overflow-hidden">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-primary text-sm font-bold uppercase tracking-wider mb-1">XP Earned</p>
+<h3 class="text-white text-4xl font-black">+1,250 <span class="text-lg font-normal text-white/50">XP</span></h3>
+</div>
+<div class="text-right">
+<p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-1">Total Progress</p>
+<p class="text-white font-bold">Level 24 <span class="text-primary/70">→ Level 25</span></p>
+</div>
+</div>
+<!-- Progress Bar Container -->
+<div class="h-4 w-full bg-white/10 rounded-full overflow-hidden p-0.5 border border-white/5">
+<div class="h-full bg-gradient-to-r from-boss-purple to-primary rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Statistics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mt-6">
+<div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition-all cursor-default group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">timer</span>
+<p class="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-1">Time Taken</p>
+<p class="text-white text-xl font-bold">14:22</p>
+</div>
+<div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition-all cursor-default group border-primary/20">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">star</span>
+<p class="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-1">Perfect Reps</p>
+<p class="text-white text-xl font-bold">48/50</p>
+</div>
+<div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition-all cursor-default group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">leaderboard</span>
+<p class="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-1">Stage Rank</p>
+<p class="text-white text-xl font-bold">Top 3%</p>
+</div>
+</div>
+<!-- Motivational Quote -->
+<div class="mt-12 mb-8 text-center italic text-white/40 font-light">
+                "Your limits have been redefined. The horizontal world is now yours to command."
+            </div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 w-full max-w-md mt-4">
+<button class="flex-1 bg-primary text-background-dark font-black text-sm uppercase tracking-widest h-14 rounded-lg flex items-center justify-center gap-2 glow-cyan hover:scale-[1.02] active:scale-[0.98] transition-all">
+                    Claim Rewards &amp; Continue
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="px-6 h-14 rounded-lg border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                    Share
+                </button>
+</div>
+</main>
+<!-- Footer Decoration -->
+<footer class="mt-auto py-10 opacity-30">
+<div class="flex gap-4">
+<div class="w-1 h-1 rounded-full bg-white"></div>
+<div class="w-1 h-1 rounded-full bg-white"></div>
+<div class="w-1 h-1 rounded-full bg-white"></div>
+</div>
+</footer>
+</div>
+</body></html>

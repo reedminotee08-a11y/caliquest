@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weekly Challenges Hub | Calisthenics Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ddff2",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#102122",
+                        "accent-purple": "#a855f7",
+                        "accent-silver": "#cbd5e1",
+                        "success": "#22c55e",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-cyan { box-shadow: 0 0 15px rgba(13, 223, 242, 0.3); }
+        .glow-purple { box-shadow: 0 0 15px rgba(168, 85, 247, 0.3); }
+        .glow-silver { box-shadow: 0 0 15px rgba(203, 213, 225, 0.3); }
+        .glow-success { box-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white">
+<!-- Top Navigation Bar -->
+<div class="w-full border-b border-solid border-slate-200 dark:border-[#224649] bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="max-w-[1200px] mx-auto px-4 lg:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight hidden sm:block">Calisthenics Hub</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors text-primary border-b-2 border-primary" href="#">Workouts</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Challenges</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Leaderboard</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-[#224649] hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">notifications</span>
+</button>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-[#224649] hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary" data-alt="User profile avatar with neon border" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFfs40W7-kIt-gM7N920_JBiIc3gRuUgTkIkoyOXLUqvptKS--TaX_2znpzl6TVDFBQxU6-vbR47enwdEvw8wdgnaZ3vbabXNQFfLyoER7_MRc-ixvRwPmdZ1bPp4W9ysJ7lBtlmW88IujHV7J6ApdNNbEgl8XNjctjU2qPrpDB4Ilk5wA56WiEt_BKPVvKWw5upzoMhocNIiKe4naZZ-wuqXP3CFEEvfiaYuGuNOSmfBMNwuvrNl5q1I1S457jGQByknxv1d10UaR");'></div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="max-w-[1200px] mx-auto px-4 lg:px-10 py-8">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-10">
+<div class="flex flex-col gap-2">
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">Weekly Challenges</h1>
+<p class="text-slate-500 dark:text-[#90c6cb] text-lg">Complete challenges to earn XP and level up your skills.</p>
+</div>
+<div class="flex items-center gap-3 bg-primary/10 border border-primary/20 px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined text-primary">timer</span>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold tracking-widest text-primary">Time Remaining</span>
+<span class="text-lg font-mono font-bold leading-none">04d : 12h : 45m</span>
+</div>
+</div>
+</div>
+<!-- Community Progress Section -->
+<div class="mb-12">
+<div class="glass-card rounded-2xl p-6 border-l-4 border-l-primary">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+<div>
+<h2 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">groups</span>
+                            Community Goal: Total Pull-ups
+                        </h2>
+<p class="text-slate-400 text-sm mt-1">Join the collective push to unlock a weekend XP boost for everyone!</p>
+</div>
+<div class="text-right">
+<span class="text-2xl font-bold text-primary">750,000</span>
+<span class="text-slate-400 text-sm font-medium"> / 1,000,000</span>
+</div>
+</div>
+<div class="relative w-full h-4 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full glow-cyan" style="width: 75%;"></div>
+<!-- Animated stripes using CSS gradient -->
+<div class="absolute top-0 left-0 h-full w-full opacity-20" style="background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent); background-size: 1rem 1rem;"></div>
+</div>
+<div class="flex justify-between mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">
+<span>Started 3 days ago</span>
+<span class="text-primary animate-pulse">75% Complete</span>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<div class="flex items-center gap-4 mb-6">
+<h2 class="text-2xl font-bold">Active Challenges</h2>
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<!-- Challenges Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Challenge Card: The Endurance King (Cyan/Primary) -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col group border border-primary/20 hover:border-primary transition-all duration-300">
+<div class="relative h-48 bg-cover bg-center" data-alt="Athletic person doing high intensity pushups" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRcatOuDo_4TxzTUhgf3VKo5T2SBG8jqS9PvKv72FrVY9NnUqTVvezpUh5RloRea4rWCpwAe3gOL7pzkoQtv2epNVcr-WXN7ZnwAa_0gsVuW4oWg6nHWRLbOHq50ZiObU0c5gX8etnL263kIoVa_7t_2D-KzKMkD-2EzFyC8fby65ZinQr0DZ0sQX_4-u7wqFZvq5wS7lsFwOLVu1D8hRWVVviYLasR6Z9f38s-EOjrNohiql8NrQrw9LoPBo4EjeyUXW2d1V0oOvI");'>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-background-dark px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">+500 XP</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">The Endurance King</h3>
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+</div>
+<p class="text-slate-400 text-sm mb-6 leading-relaxed">Perform 500 push-ups throughout the week to build peak stamina.</p>
+<div class="mt-auto space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold mb-1 uppercase tracking-widest text-slate-500">
+<span>Progress</span>
+<span class="text-primary">320 / 500</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary glow-cyan" style="width: 64%;"></div>
+</div>
+</div>
+<button class="w-full bg-primary/10 hover:bg-primary text-primary hover:text-background-dark border border-primary/50 py-3 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">add_circle</span>
+                            Log Reps
+                        </button>
+</div>
+</div>
+</div>
+<!-- Challenge Card: Gravity Defier (Purple) -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col group border border-accent-purple/20 hover:border-accent-purple transition-all duration-300">
+<div class="relative h-48 bg-cover bg-center" data-alt="Person holding a perfect handstand on a beach" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTsVqk2nOZVW__8lvH__1czsIZ4E3rwVcu1Dsy-Pun0hPyThHlIOiK7qyOm-gRZWHG44aGQSR6tk3MRtKBvD3d24qO7PV8c2RdOpNGgVqHxOVZbj8Dj8nT6JT5deaaR52daIRfguHbAE1VB0SdU-Cb3oQ1XYWzVU8uk1sPdNaA7ELlLRW-Smpczk5dkoNDed3DSyVli0B7Yl3wbDFNbcqx3UlPuxqc7ID5gTstvt9-RGN4QiIwqCoHvG7l2j-j6E2dOQ10yubIo_7l");'>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-accent-purple text-white px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">+750 XP</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-accent-purple transition-colors">Gravity Defier</h3>
+<span class="material-symbols-outlined text-accent-purple">balance</span>
+</div>
+<p class="text-slate-400 text-sm mb-6 leading-relaxed">Hold a 30-second handstand without wall support. Form must be clean.</p>
+<div class="mt-auto space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold mb-1 uppercase tracking-widest text-slate-500">
+<span>Progress</span>
+<span class="text-accent-purple">0 / 30s</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-accent-purple glow-purple" style="width: 0%;"></div>
+</div>
+</div>
+<button class="w-full bg-accent-purple/10 hover:bg-accent-purple text-accent-purple hover:text-white border border-accent-purple/50 py-3 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">video_call</span>
+                            Submit Video
+                        </button>
+</div>
+</div>
+</div>
+<!-- Challenge Card: Consistency Hero (Silver/Completed) -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col group border border-success/30 bg-success/5 relative">
+<!-- Completion Overlay -->
+<div class="absolute top-4 right-4 z-10 size-12 bg-success rounded-full flex items-center justify-center text-white glow-success border-4 border-background-dark">
+<span class="material-symbols-outlined font-black">check</span>
+</div>
+<div class="relative h-48 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Person checking a fitness calendar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_kyf487JppTC2Js91aWgRsECdYEvY76JOoFp-_StEov5raV7CqW1PwWNhiIEOu02JZcZuBaEdkYshAxmuu13CnnKaJLPnGtSkF2kQshYt9xV9wTYtrymtbMAwR-vBtd_J_faWHuiHAniMW0L8z3uh934Dpdp-7zp3HSH_HNEZtX-X-k9M_xfw8yUORauQ40l5xK8TAArUnTl6C6NRuKi6DM5xWJDPfoc_KBsvsnsNO25xMptfiS8s2-cnmKIdq3gHKWQufxiOdyNk");'>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-accent-silver text-slate-800 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">+400 XP</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold text-white">Consistency Hero</h3>
+<span class="material-symbols-outlined text-accent-silver">calendar_today</span>
+</div>
+<p class="text-slate-400 text-sm mb-6 leading-relaxed">Train for 5 consecutive days. Rest days with mobility work count!</p>
+<div class="mt-auto space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold mb-1 uppercase tracking-widest text-success">
+<span>Complete</span>
+<span>5 / 5</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-success glow-success" style="width: 100%;"></div>
+</div>
+</div>
+<div class="w-full bg-success/20 text-success border border-success/50 py-3 rounded-xl font-bold flex items-center justify-center gap-2 cursor-default">
+<span class="material-symbols-outlined text-base">verified</span>
+                            Reward Claimed
+                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-card rounded-xl p-4 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">military_tech</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Your Level</p>
+<p class="text-xl font-bold">Lvl 24 Elite</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-accent-purple/20 flex items-center justify-center text-accent-purple">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Current Streak</p>
+<p class="text-xl font-bold">12 Days</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-success/20 flex items-center justify-center text-success">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Total XP Earned</p>
+<p class="text-xl font-bold">42,500 XP</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-accent-silver/20 flex items-center justify-center text-accent-silver">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Rank</p>
+<p class="text-xl font-bold">#424 Global</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-background-dark border-t border-[#224649] px-6 py-3 flex justify-between items-center z-50">
+<button class="text-primary flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px]">Home</span>
+</button>
+<button class="text-slate-500 flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">fitness_center</span>
+<span class="text-[10px]">Train</span>
+</button>
+<button class="text-slate-500 flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">trophy</span>
+<span class="text-[10px]">Challenges</span>
+</button>
+<button class="text-slate-500 flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">Profile</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,40 @@
+{
+  "name": "caliquest",
+  "version": "1.0.0",
+  "description": "CaliQuest - أتقن جسدك. طور حياتك. أفضل تجربة تمرينات كاليستينيك مُلعَّبة.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000",
+    "dev": "npx http-server -p 8000 -o",
+    "build": "echo 'Build complete - static files ready for Vercel'",
+    "serve": "npx http-server -p 8000",
+    "preview": "npx http-server -p 3000 -c-1",
+    "deploy": "vercel --prod",
+    "test": "echo \"No tests configured yet\""
+  },
+  "keywords": [
+    "calisthenics",
+    "fitness",
+    "workout",
+    "training",
+    "progressive",
+    "arabic",
+    "supabase",
+    "vercel"
+  ],
+  "author": "CaliQuest Team",
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.93.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "autoprefixer": "^10.4.23",
+    "http-server": "^14.1.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18"
+  }
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CaliQuest - Master Your Body</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00eeff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223", // Deep charcoal style base
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .gritty-bg {
+            background-color: #0f2223;
+            background-image: radial-gradient(circle at 50% -20%, #20484b 0%, #0f2223 80%);
+        }
+        .glow-cyan {
+            text-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
+        }
+        .blur-decoration {
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-white selection:bg-primary selection:text-black">
+<!-- Blur Background Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden -z-10">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary blur-decoration rounded-full"></div>
+<div class="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-primary blur-decoration rounded-full"></div>
+</div>
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-black tracking-tight uppercase">CaliQuest</h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Training</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Challenges</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Leaderboard</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="px-5 h-10 text-sm font-bold border border-white/10 rounded-lg hover:bg-white/5 transition-colors">Login</button>
+<button class="px-5 h-10 bg-primary text-background-dark text-sm font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,238,255,0.4)] transition-all">Sign Up</button>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto">
+<!-- Hero Section -->
+<section class="relative py-20 px-6 overflow-hidden">
+<div class="flex flex-col items-center text-center max-w-4xl mx-auto py-12 @container">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                    Join 50,000+ Athletes
+                </div>
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-6 glow-cyan">
+                    MASTER YOUR BODY.<br/>
+<span class="text-primary">LEVEL UP YOUR LIFE.</span>
+</h1>
+<p class="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
+                    The ultimate gamified calisthenics experience. Track progress, unlock skills, and conquer the leaderboard with our expert-led programs.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+<button class="px-8 h-14 bg-primary text-background-dark text-lg font-black rounded-xl hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                        START YOUR JOURNEY
+                        <span class="material-symbols-outlined">bolt</span>
+</button>
+<button class="px-8 h-14 bg-white/5 border border-white/10 text-white text-lg font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                        View Curriculum
+                        <span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+<!-- Floating Stat Cards (Visual Flair) -->
+<div class="mt-20 w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2 rounded-xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+<p class="text-white/60 text-sm font-bold uppercase tracking-widest">Active Athletes</p>
+<p class="text-white text-4xl font-black tracking-tight">50,000+</p>
+<div class="w-full h-1 bg-white/10 rounded-full mt-2 overflow-hidden">
+<div class="w-3/4 h-full bg-primary shadow-[0_0_10px_#00eeff]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+<p class="text-white/60 text-sm font-bold uppercase tracking-widest">Levels Completed</p>
+<p class="text-white text-4xl font-black tracking-tight">1.2M</p>
+<div class="w-full h-1 bg-white/10 rounded-full mt-2 overflow-hidden">
+<div class="w-1/2 h-full bg-primary shadow-[0_0_10px_#00eeff]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+<p class="text-white/60 text-sm font-bold uppercase tracking-widest">Skills Unlocked</p>
+<p class="text-white text-4xl font-black tracking-tight">250K</p>
+<div class="w-full h-1 bg-white/10 rounded-full mt-2 overflow-hidden">
+<div class="w-2/3 h-full bg-primary shadow-[0_0_10px_#00eeff]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Decorative Image -->
+<div class="mt-12 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+<img alt="Athletic person performing a muscle up on bars with cyan lighting" class="w-full h-[500px] object-cover opacity-80 contrast-125 grayscale hover:grayscale-0 transition-all duration-700" data-alt="Professional athlete performing muscle up with cyan lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdBrGrxdmSYqGYimVpuuFeBXdOJFJn2NuQwospttrM6Glt1t69Nensfb9NEhjz5zGBrel7JHo3NMd-3-UMeFuYDm4CrUjWEDA-FcE8I5mpxdvKms19WWQghjzG9UDmSznnPmgylwRNhZh9FUiG_BL6_utZCdXiGgtSEul_kl2TO0V5hfPbkccdog17Kz9X7YoYHOIgFW55WZyyjYGhM9WN6vuN-mi2UHxeddPCR3aNzLI0wYFmmxiVr2sXY05yk9l008_OL_6VzTZB"/>
+</div>
+</section>
+<!-- Feature Section -->
+<section class="py-24 px-6 @container">
+<div class="flex flex-col gap-4 mb-16">
+<h2 class="text-primary text-sm font-black uppercase tracking-[0.3em]">The System</h2>
+<h3 class="text-4xl md:text-5xl font-black tracking-tight">Level Up Your Training</h3>
+<p class="text-white/60 text-lg max-w-2xl">Experience a new way of progression with our gamified training system designed for athletes who crave challenge.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group relative flex flex-col gap-6 rounded-2xl border border-white/10 bg-white/5 p-8 hover:border-primary/50 transition-all duration-300">
+<div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-xl font-bold leading-tight">Level Progression</h4>
+<p class="text-white/50 leading-relaxed text-sm">Earn XP and unlock new tiers of difficulty as you master complex bodyweight movements. From beginner to pro elite.</p>
+</div>
+<div class="absolute bottom-4 right-8 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative flex flex-col gap-6 rounded-2xl border border-white/10 bg-white/5 p-8 hover:border-primary/50 transition-all duration-300">
+<div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">fitness_center</span>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-xl font-bold leading-tight">Expert Routines</h4>
+<p class="text-white/50 leading-relaxed text-sm">Follow structured programs designed by world-class calisthenics pros. Detailed video guides for every rep.</p>
+</div>
+<div class="absolute bottom-4 right-8 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative flex flex-col gap-6 rounded-2xl border border-white/10 bg-white/5 p-8 hover:border-primary/50 transition-all duration-300">
+<div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-xl font-bold leading-tight">Community Challenges</h4>
+<p class="text-white/50 leading-relaxed text-sm">Compete in weekly events and climb the global leaderboards. Earn exclusive badges and rewards.</p>
+</div>
+<div class="absolute bottom-4 right-8 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-6">
+<div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary/20 to-transparent border border-white/10 p-12 md:p-20 text-center">
+<div class="absolute top-0 left-0 w-full h-full gritty-bg -z-10"></div>
+<h2 class="text-4xl md:text-5xl font-black mb-8">READY TO DEFINE YOUR PEAK?</h2>
+<p class="text-lg text-white/70 max-w-xl mx-auto mb-10">Start your 7-day free trial today and get immediate access to over 500+ training sessions and our community of legends.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<button class="px-10 h-16 bg-primary text-background-dark text-xl font-black rounded-xl hover:shadow-[0_0_30px_rgba(0,238,255,0.6)] transition-all">
+                        GET STARTED NOW
+                    </button>
+<button class="px-10 h-16 border border-white/20 bg-white/5 text-white text-xl font-bold rounded-xl hover:bg-white/10 transition-all">
+                        Explore Skills
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-white/10 py-12 bg-background-dark">
+<div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="text-primary/50">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-white/30 font-bold uppercase tracking-widest text-sm">CaliQuest © 2024</span>
+</div>
+<div class="flex gap-8 text-white/40 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl">share</span>
+</div>
+<div class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl">camera</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
