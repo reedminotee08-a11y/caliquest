@@ -364,7 +364,6 @@ class CaliQuestApp {
                 if (this.currentUser) {
                     window.location.href = 'fitness_level_selection_step_2.html';
                 } else {
-                    this.showNotification('يجب تسجيل الدخول أولاً', 'warning');
                     this.showAuthModal('signup');
                 }
             });
@@ -383,7 +382,6 @@ class CaliQuestApp {
                 if (this.currentUser) {
                     window.location.href = 'fitness_level_selection_step_2.html';
                 } else {
-                    this.showNotification('يجب تسجيل الدخول أولاً', 'warning');
                     this.showAuthModal('signup');
                 }
             });
@@ -417,7 +415,6 @@ class CaliQuestApp {
                 if (this.currentUser) {
                     window.location.href = 'workout_player_screen.html';
                 } else {
-                    this.showNotification('يجب تسجيل الدخول أولاً', 'warning');
                     this.showAuthModal('login');
                 }
             });
@@ -429,7 +426,6 @@ class CaliQuestApp {
                 if (this.currentUser) {
                     window.location.href = 'caliquest_xp_rewards_store.html';
                 } else {
-                    this.showNotification('يجب تسجيل الدخول أولاً', 'warning');
                     this.showAuthModal('login');
                 }
             });
