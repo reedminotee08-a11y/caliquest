@@ -1,0 +1,7 @@
+{
+  "name": "CaliQuest - Gamified Calisthenics",
+  "description": "A futuristic, gamified calisthenics training platform with progressive maps, levels, and exercises.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
